@@ -86,9 +86,14 @@ class GiftClaimerMod(loader.Module):
 
         # Налаштування цільового каналу
         target = str(self.config["target_channel"]).replace("@", "").lower()
-        chat_username = getattr(message.chat, "username", None) or ""
-        chat_username = chat_username.lower()
-        chat_id = str(message.chat_id)
+        
+        chat = getattr(message, "chat", None)
+        if not chat:
+            return
+
+        chat_username = getattr(chat, "username", None) or ""
+        chat_username = str(chat_username).lower()
+        chat_id = str(getattr(message, "chat_id", ""))
 
         # Перевірка чи повідомлення з потрібного чату
         if chat_username == target or chat_id == target or chat_id == f"-100{target}":

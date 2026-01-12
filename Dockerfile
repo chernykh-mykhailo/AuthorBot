@@ -22,6 +22,11 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libffi-dev \
     python3-dev \
     pkg-config \
+    cmake \
+    libavcodec-dev \
+    libavformat-dev \
+    libswscale-dev \
+    libavdevice-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Poetry
@@ -34,6 +39,7 @@ COPY poetry.lock pyproject.toml ./
 
 # Install project dependencies globally (since virtualenvs-create=false)
 RUN /opt/poetry/bin/poetry lock --no-update && /opt/poetry/bin/poetry install --only main --no-root
+RUN pip install --no-cache-dir tgcalls==2.0.0
 RUN pip install --no-cache-dir pytgcalls websockets
 
 # Copy the rest of the application
