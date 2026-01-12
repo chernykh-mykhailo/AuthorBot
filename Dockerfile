@@ -34,6 +34,7 @@ COPY poetry.lock pyproject.toml ./
 
 # Install project dependencies globally (since virtualenvs-create=false)
 RUN /opt/poetry/bin/poetry lock --no-update && /opt/poetry/bin/poetry install --only main --no-root
+RUN pip install --no-cache-dir pytgcalls websockets
 
 # Copy the rest of the application
 COPY . .

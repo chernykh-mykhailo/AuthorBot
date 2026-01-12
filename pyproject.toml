@@ -28,9 +28,7 @@ tgcrypto = "1.2.5"
 hikka-tl-new = "2.0.8"
 ruamel-yaml = "0.17.21"
 rsa = "4.9"
-pydub = "*"
-pytgcalls = ">=2.1.0"
-websockets = "*"
+pydub = "0.25.1"
 translators = ">=5.9.0"
 
 
