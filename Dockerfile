@@ -18,6 +18,10 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     build-essential \
     ffmpeg \
     git \
+    libopus-dev \
+    libffi-dev \
+    python3-dev \
+    pkg-config \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Poetry
